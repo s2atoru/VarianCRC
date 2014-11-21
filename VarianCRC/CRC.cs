@@ -10,7 +10,7 @@ namespace VarianCRC
         // Algorithm adapted from Varian MLC File Format
         // Description Reference Guide (July 2013)
 
-        private static ushort CalculateCRC(string str)
+        public static ushort CalculateCRC(string str)
         {
             ushort[] crcTable = BuildCRCTable();
 
