@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("VarianCRC")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Varian Medical Systems")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("VarianCRC")]
-[assembly: AssemblyCopyright("Copyright © Varian Medical Systems 2014")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
