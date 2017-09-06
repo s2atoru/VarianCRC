@@ -1,12 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Text;
 
 namespace VarianCRC
 {
     public static class CRC
     {
+        /// <summary>
+        /// Add CRC at the end of a Varian MLC file
+        /// </summary>
+        /// <param name="filePath"> File path to the MLC file </param>
+        public static void AddCrc(string filePath)
+        {
+            byte[] fileContents = null;
+
+            try
+            {
+                fileContents = File.ReadAllBytes(filePath);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("There was a problem reading the file.");
+                Console.WriteLine(e.Message);
+            }
+
+            ushort crc = CalculateCRC(fileContents);
+
+            using (StreamWriter writer = new StreamWriter(filePath, true, Encoding.UTF8))
+            {
+                writer.WriteLine();
+                writer.WriteLine("CRC = {0:X4}", crc);
+            }
+        }
+
         // Algorithm adapted from Varian MLC File Format
         // Description Reference Guide (July 2013)
 
@@ -73,5 +99,6 @@ namespace VarianCRC
 
             return acc;
         }
+
     }
 }

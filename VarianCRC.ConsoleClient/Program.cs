@@ -29,6 +29,8 @@ namespace VarianCRC.ConsoleClient
 
             Console.WriteLine("{0:X4}", CRC.CalculateCRC(fileContents));
 
+            CRC.AddCrc(filePath);
+
             return 0;
         }
     }
