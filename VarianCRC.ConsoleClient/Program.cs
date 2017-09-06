@@ -14,18 +14,16 @@ namespace VarianCRC.ConsoleClient
             }
 
             string filePath = args[0];
-            string fileContents = null;
+            byte[] fileContents = null;
 
             try
             {
-                using (StreamReader reader = File.OpenText(filePath))
-                {
-                    fileContents = reader.ReadToEnd();
-                }
+                fileContents = File.ReadAllBytes(filePath);
             }
             catch (Exception e)
             {
                 Console.WriteLine("There was a problem reading the file.");
+                Console.WriteLine(e.Message);
                 return 1;
             }
 

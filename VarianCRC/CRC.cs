@@ -27,6 +27,23 @@ namespace VarianCRC
             return crc;
         }
 
+        public static ushort CalculateCRC(byte[] byteData)
+        {
+            ushort[] crcTable = BuildCRCTable();
+
+            ushort crc = unchecked((ushort)~0);
+            foreach (ushort c in byteData)
+            {
+                // Skip terminating characters
+                if (c == (ushort)'\r' || c == (ushort)'\n')
+                    continue;
+
+                crc = (ushort)((crc << 8) ^ crcTable[(crc >> 8) ^ c]);
+            }
+
+            return crc;
+        }
+
         private static ushort[] BuildCRCTable()
         {
             ushort[] crcTable = new ushort[256];
